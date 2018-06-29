@@ -1,8 +1,8 @@
-CREATE TABLE if not exists user (
+CREATE TABLE if not exists item (
   id varchar(36) NOT NULL,
   name varchar(128) DEFAULT NULL,
-  age int(10) DEFAULT NULL,
-  create_time datetime DEFAULT NULL,
-  update_time datetime DEFAULT NULL,
+  units varchar(36) DEFAULT NULL,
+  price double DEFAULT NULL,
+  discount double DEFAULT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8

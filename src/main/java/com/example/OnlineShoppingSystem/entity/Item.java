@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class item {
+public class Item {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid")
@@ -19,7 +19,7 @@ public class item {
     private double price;
     private float discount;
 
-    public item(int id, String name, String units, double price, float discount) {
+    public Item(int id, String name, String units, double price, float discount) {
         this.id = id;
         this.name = name;
         this.units = units;
