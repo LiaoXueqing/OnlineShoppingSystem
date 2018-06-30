@@ -13,25 +13,27 @@ public class Item {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid")
-    private int id;
+    private String id;
     private String name;
     private String units;
     private double price;
-    private float discount;
 
-    public Item(int id, String name, String units, double price, float discount) {
+    public Item() {
+
+    }
+
+    public Item(String id, String name, String units, double price) {
         this.id = id;
         this.name = name;
         this.units = units;
         this.price = price;
-        this.discount = discount;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -59,11 +61,4 @@ public class Item {
         this.price = price;
     }
 
-    public float getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(float discount) {
-        this.discount = discount;
-    }
 }
