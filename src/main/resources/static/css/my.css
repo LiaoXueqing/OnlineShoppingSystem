@@ -1,0 +1,20 @@
+body{
+    width:80%;
+    margin:0 auto;
+}
+table{
+    width:600px !important;
+    margin:0 auto !important;
+}
+.left{
+    text-align:left;
+}
+.right{
+    text-align:right;
+}
+.hide{
+    display:none;
+}
+.itemNumber{
+    width:40px;
+}

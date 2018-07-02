@@ -11,32 +11,25 @@ import javax.persistence.Id;
 @EntityListeners(AuditingEntityListener.class)
 public class Item {
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid")
-    private String id;
+//    @GeneratedValue(generator = "uuid")
+//    @GenericGenerator(name = "uuid", strategy = "uuid")
+    private String barcode;
     private String name;
     private String units;
     private double price;
+    private String discount;
 
     public Item() {
 
     }
 
-    public Item(String id, String name, String units, double price) {
-        this.id = id;
+    public Item(String barcode, String name, String units, double price,String discount) {
+        this.barcode = barcode;
         this.name = name;
         this.units = units;
         this.price = price;
+        this.discount = discount;
     }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -61,4 +54,19 @@ public class Item {
         this.price = price;
     }
 
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
+
+    public String getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(String discount) {
+        this.discount = discount;
+    }
 }

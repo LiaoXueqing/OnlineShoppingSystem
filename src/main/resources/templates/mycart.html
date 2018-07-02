@@ -4,13 +4,45 @@
     <meta charset="UTF-8">
     <title>shopping cart</title>
     <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/css/my.css"/>
 </head>
 <body>
-show all shopping choose
-<!--
+show all shopping my cart have
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th style="display:none;">编码</th>
+        <th>名称</th>
+        <th>数量</th>
+    </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>ITEM000000</td>
+            <td>可口可乐</td>
+            <td class="itemNumber">3</td>
+        </tr>
+        <tr>
+            <td>ITEM000002</td>
+            <td>苹果</td>
+            <td class="itemNumber">5</td>
+        </tr>
+
+    <!--<th:block th:each="item: ${itemList}">
+        <tr>
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.number}"></td>
+        </tr>
+    </th:block>-->
+    </tbody>
+</table>
+<div class="right">
+    <input type="button" value="结算" onclick="payments()">
+</div>
+
 <script src="/js/jquery.min.js" charset="utf-8"></script>
 <script src="/lib/bootstrap/js/bootstrap.js" charset="utf-8"></script>
--->
-
+<script src="/js/my.js" charset="utf-8"></script>
 </body>
 </html>
