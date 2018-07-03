@@ -19,28 +19,34 @@
     <script src="/js/my.js" charset="utf-8"></script>
 </head>
 <body>
-<div class="right">
+<div class="container">
+    <div class="center">
     <input type="button" value="我的购物车" onclick="myCart()">
 </div>
-<table class="table table-bordered">
-    <thead>
-    <tr>
-        <th>名称</th>
-        <th>单位</th>
-        <th>单价</th>
-        <th>操作</th>
-    </tr>
-    </thead>
-    <tbody>
-    <th:block th:each="item: ${itemList}">
+    <table class="table table-bordered">
+        <thead>
         <tr>
-            <td th:text="${item.name}"></td>
-            <td th:text="${item.units}"></td>
-            <td th:text="${item.price}"></td>
-            <td><input type="number" min="0" max="10" value="0" class="itemNumber"><input type="button" value="加入购物车"/></td>
+            <th>名称</th>
+            <th>单位</th>
+            <th>单价</th>
+            <th>操作</th>
         </tr>
-    </th:block>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        <th:block th:each="item: ${itemList}">
+            <tr>
+                <td class="hide" th:text="${item.barcode}"></td>
+                <td th:text="${item.name}"></td>
+                <td th:text="${item.units}"></td>
+                <td th:text="${item.price}"></td>
+                <td>
+                    <!--<input type="number" min="0" max="10" value="0" class="itemNumber">-->
+                    <input type="button" value="加入购物车" th:onclick="'javascript:addItem(\''+${item.barcode}+'\',\''+${item.name}+'\')'"/>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
