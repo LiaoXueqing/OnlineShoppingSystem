@@ -7,15 +7,13 @@ import com.example.OnlineShoppingSystem.service.impl.ItemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//@RestController
 @Controller
 public class ItemController {
     @Autowired
@@ -30,7 +28,7 @@ public class ItemController {
      * @param model
      * @return
      */
-    @GetMapping("items")
+    @GetMapping("/")
     public String getItems(Model model){
         List<Item> itemList = itemService.getAllItems();
         model.addAttribute("itemList", itemList);
@@ -42,22 +40,21 @@ public class ItemController {
      * @param cartItems
      * @return
      */
-    @PostMapping("receipt")
-    public String getReceipt(@RequestBody String[] cartItems,Model model) {
-//    public Map<String, Object> getReceipt(@RequestBody String[] cartItems,Model model) {
-//    public Map<String, Object> getReceipt() {
+//    @PostMapping("/receipts")
+    @RequestMapping(value = "/receipts", method = RequestMethod.POST)
+    public Map<String, Object> getReceipt(@RequestBody String[] cartItems,Model model) {
         System.out.println("——————打印收据——————");
-        Map<String, Object> result = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         double subTotal = itemService.getTotalMoneyAfterDiscount(cartItems);
-        result.put("items", itemService.getReceiptItem(cartItems));
-        result.put("total", subTotal);
-        result.put("dec", itemService.getTotalMoney(cartItems) - subTotal);
-        System.out.println("result:"+result+"——————");
-        model.addAttribute("result", result);
-        return "receipt";
-//        return result;
+        double discount = itemService.getTotalMoney(cartItems) - itemService.getTotalMoneyAfterDiscount(cartItems);
+        map.put("items", itemService.getReceiptItem(cartItems));
+        map.put("total", subTotal+"（元）");
+        map.put("discount", discount+"（元）");
+        System.out.println("map:"+map+"——————");
+        model.addAttribute("map", map);
+        return map;
     }
-    @GetMapping("myCart")
+    @GetMapping("/myCart")
     public String getShoppings(){
         return "/mycart";
     }

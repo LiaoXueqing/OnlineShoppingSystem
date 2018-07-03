@@ -13,13 +13,15 @@ function payments(){
                     'ITEM000003-2','ITEM000005','ITEM000005','ITEM000005'];
     alert(cartItems);
     $.ajax({
-        url:'/receipt',
+        url:'/receipts',
         type:"POST",
         contentType : "application/json" ,
         data : JSON.stringify(cartItems),
-        async:false,
-        success:function(){
+//        async:false,
+        success:function(data){
             alert("success");
+            alert(data);
+            document.write(data);
         },
         error:function(){
             alert("error");
